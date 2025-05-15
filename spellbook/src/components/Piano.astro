@@ -1,0 +1,80 @@
+---
+import PianoScript from './PianoScript.jsx';
+
+const whiteKeys = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4'];
+const blackKeys = [
+  { note: 'C#4', index: 0 },
+  { note: 'D#4', index: 1 },
+  { note: 'F#4', index: 3 },
+  { note: 'G#4', index: 4 },
+  { note: 'A#4', index: 5 },
+];
+---
+
+<div class="piano">
+  <div class="white-keys">
+    {whiteKeys.map(note => (
+      <div class="key white" data-note={note}></div>
+    ))}
+  </div>
+  <div class="black-keys">
+    {blackKeys.map(({ note, index }) => (
+      <div
+        class="key black"
+        data-note={note}
+        style={{
+          left: `${(index + 1) * (100 / whiteKeys.length)}%`,
+        }}
+      ></div>
+    ))}
+  </div>
+</div>
+
+<div id="sequence-image-container"></div>
+
+<PianoScript client:load />
+
+<style>
+.piano {
+  position: relative;
+  width: 70%; /* Make the piano a bit thinner */
+  margin: auto;
+  height: 50%;
+  user-select: none;
+}
+
+.white-keys {
+  display: flex;
+  height: 100%;
+}
+
+.key.white {
+  width: 14%; /* Thinner white keys */
+  background: white;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+.black-keys {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.key.black {
+  position: absolute;
+  width: calc(14% * 0.6); /* 60% of the white key width */
+  height: 100%;
+  background: black;
+  transform: translateX(-50%);
+  z-index: 2;
+  border-radius: 0 0 4px 4px;
+  pointer-events: auto;
+}
+</style>
+

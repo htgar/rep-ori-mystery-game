@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Piano from '../components/Piano.astro'
+---
+
+<Layout>
+<div class="hero bg-base-200 min-h-screen">
+  <div class="hero-content text-center">
+    <div class="max-w-md">
+      <h1 class="text-5xl font-bold">Spellbook</h1>
+      <button class="btn btn-xl btn-primary my-6" onclick="music_modal.showModal()">Music Spell</button>
+      <dialog id="music_modal" class="modal">
+        <div class="modal-box max-w-4xl h-[600px] max-h-[90vh]">
+          <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+          </form>
+          <h2 class="text-4xl font-bold my-6">Music Spell</h2>
+          <Piano/>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
+    </div>
+  </div>
+</div>
+</Layout>
