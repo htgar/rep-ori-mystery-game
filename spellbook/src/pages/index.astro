@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Piano from '../components/Piano.astro'
+import Passcode from '../components/Passcode.jsx'
 ---
 
 <Layout>
@@ -16,6 +17,19 @@ import Piano from '../components/Piano.astro'
           </form>
           <h2 class="text-4xl font-bold my-6">Music Spell</h2>
           <Piano/>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
+      <button class="btn btn-xl btn-primary my-6" onclick="passcode_modal.showModal()">Passcode Spell(Change Name)</button>
+      <dialog id="passcode_modal" class="modal">
+        <div class="modal-box max-w-4xl h-[600px] max-h-[90vh]">
+          <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+          </form>
+          <h2 class="text-4xl font-bold my-6">Passcode Spell</h2>
+          <Passcode client:load />
         </div>
         <form method="dialog" class="modal-backdrop">
           <button>close</button>

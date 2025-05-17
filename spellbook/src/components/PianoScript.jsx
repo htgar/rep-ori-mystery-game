@@ -13,7 +13,7 @@ export default function PianoScript() {
       baseUrl: 'https://tonejs.github.io/audio/salamander/',
     }).toDestination();
 
-    const secretSequence = ['C4', 'D4', 'E4', 'F4']; // Your target melody
+    const secretSequence = ['C4', 'C4', 'G4', 'G4', 'A4', 'A4', 'G4']; // Your target melody
     const inputSequence = [];
     const maxLength = secretSequence.length;
 
